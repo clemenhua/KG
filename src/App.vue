@@ -1,30 +1,27 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <!-- 一级路由 -->
+  <RouterView />
+  <!-- <button @click="fn">测试请求工具</button> -->
+  <!-- <p style="color: white;">{{fn}}</p> -->
 </template>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+<!-- 请求路由 -->
+<script>
+import request from './utils/request';
+export default {
+  name: "App",
+  setup() {
+    // const fn = () => {
+    //   // const aaa = request('/knowledge', 'get', { entity: '苹果' })
+    //   request('/knowledge', 'get', { entity: '苹果' })
+    // }
+    function fn() {
+      let aaa = request('/knowledge', 'get', { entity: '苹果' })
+      return aaa
     }
+    // console.log(fn())
+    return { fn }
   }
 }
-</style>
+
+</script>
